@@ -69,11 +69,11 @@ def rewire_only(A, init_mat, tau_rewire, tau_reweight, prand, final_step):
             
             r2 = np.random.random_sample() # choose random or adaptive rewiring
             if r2<prand:
-                null_A = rewire.random_rewire(A, n, flag)
+                null_A = rewire.random_rewire(null_A, n, flag)
             else:
-                conK = bcomp.consensus_kernel(A, tau_rewire)
-                advK = bcomp.advection_kernel(A, tau_rewire)
-                null_A = rewire.rewire(A, conK, advK, n, flag)
+                conK = bcomp.consensus_kernel(null_A, tau_rewire)
+                advK = bcomp.advection_kernel(null_A, tau_rewire)
+                null_A = rewire.rewire(null_A, conK, advK, n, flag)
 
     return null_init, null_A
 

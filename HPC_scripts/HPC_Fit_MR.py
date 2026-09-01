@@ -38,8 +38,8 @@ for i in range(j, j+iters):
 
     conK = bcomp.consensus_kernel(A, tau_rewire)
     advK = bcomp.advection_kernel(A, tau_rewire)
-    R1 = np.random.random_sample(rewire_per_iter) # choose incoming or outgoing connections
-    R2 = np.random.random_sample(rewire_per_iter) # choose random or adaptive rewiring
+    R1 = np.random.random_sample(M) # choose incoming or outgoing connections
+    R2 = np.random.random_sample(M) # choose random or adaptive rewiring
     flg1 = np.where(R1 < pin, 'in', 'out')
 
     for l, r2 in enumerate(R2):
@@ -53,9 +53,8 @@ for i in range(j, j+iters):
         A_matrices[(1+i)*reweight_per_iter] = A.copy()
 
 f = open('../Fit to empirical connectomes/Output/MR_Cout_pin_'+str(pin)+'_prand_'+str(prand)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
-pickle.dump([A_matrices, trunc_num], f)
+pickle.dump([A, trunc_num], f)
 f.close()
 f = open('../Fit to empirical connectomes/Output_long/MR_Cout_pin_'+str(pin)+'_prand_'+str(prand)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
 pickle.dump([A_matrices, trunc_num], f)
 f.close()
-

@@ -36,8 +36,8 @@ for i in range(iters):
 
     conK = bcomp.consensus_kernel(A, tau_rewire)
     advK = bcomp.advection_kernel(A, tau_rewire)
-    R1 = np.random.random_sample(rewire_per_iter) # choose incoming or outgoing connections
-    R2 = np.random.random_sample(rewire_per_iter) # choose random or adaptive rewiring
+    R1 = np.random.random_sample(M) # choose incoming or outgoing connections
+    R2 = np.random.random_sample(M) # choose random or adaptive rewiring
     flg1 = np.where(R1 < pin, 'in', 'out')
 
     for l, r2 in enumerate(R2):

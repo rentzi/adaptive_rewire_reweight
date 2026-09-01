@@ -3,7 +3,7 @@ import numpy as np
 import pickle
 import sys
 sys.path.append('..')
-from scripts import weight_adjustment, rewire
+from scripts import weight_adjustment, rewire, basic_components as bcomp
 
 f = open('../Basic analysis/Output/inits.pckl', 'rb')
 initial_matrix = pickle.load(f)

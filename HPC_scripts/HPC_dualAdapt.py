@@ -14,6 +14,7 @@ eta = 10.0 # learning rate
 steps = 10000 # sample interval
 k = int(sys.argv[1]) # index of instance
 
+p_in = 0.5 # proportion of in-link rewiring
 tau_rewire = 1.0 # tau_rewire
 tau_ls = [0.05, 0.1, 0.2, 0.5, 1.0] # tau_reweight
 tau_stationary = [0.05, 0.1, 0.5] # tau_reweight selected for stationary check
@@ -49,11 +50,11 @@ for tau in tau_ls:
             print(str(i+1),flush=True)
             A_matrices[1+i] = A.copy()
 
-    f = open('../Basic analysis/Output/dualAdapt/A_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
+    f = open('../Basic analysis/Output/dualAdapt/A_pin_'+str(p_in)+'_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
     pickle.dump([A, trunc_num], f)
     f.close()
     if tau in tau_stationary:
-        f = open('../Basic analysis/Output_long/dualAdapt/A_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
+        f = open('../Basic analysis/Output_long/dualAdapt/A_pin_'+str(p_in)+'_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
         pickle.dump([A_matrices, trunc_num], f)
         f.close()
 
@@ -87,12 +88,10 @@ for tau in tau_ls:
             print(str(i+1),flush=True)
             A_matrices[1+i] = A.copy()
 
-    f = open('../Basic analysis/Output/dualAdapt/C_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
+    f = open('../Basic analysis/Output/dualAdapt/C_pin_'+str(p_in)+'_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
     pickle.dump([A, trunc_num], f)
     f.close()
     if tau in tau_stationary:
-        f = open('../Basic analysis/Output_long/dualAdapt/C_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
+        f = open('../Basic analysis/Output_long/dualAdapt/C_pin_'+str(p_in)+'_eta_'+str(eta)+'_tau_'+str(tau)+'_'+str(k)+'.pckl', 'wb')
         pickle.dump([A_matrices, trunc_num], f)
         f.close()
-
-
